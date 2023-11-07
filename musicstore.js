@@ -19,7 +19,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/musicstore', {
 const UsuarioSchema = new mongoose.Schema({
     
    email : {type :String, required : true },
-   password : {type :String},
+   senha : {type :String},
 });
 
 const Usuario = mongoose.model("Usuario", UsuarioSchema);
@@ -27,12 +27,12 @@ const Usuario = mongoose.model("Usuario", UsuarioSchema);
 
 app.post("/cadastrousuario", async(req, res)=>{
     const email = req.body.email;
-    const password = req.body.password
+    const senha = req.body.senha
 
 
     const usuario = new Usuario({
         email : email,
-        password : password
+        senha : senha
     })
 
     try {
