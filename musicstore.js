@@ -69,6 +69,13 @@ const ProdutomusicaSchema = new mongoose.Schema({
      const marca = req.body.marca;
      const dataFabricacao = req.body.dataFabricacao;
      const quantidadeEstoque = req.body.quantidadeEstoque
+
+     if(quantidadeEstoque > 14){
+        return res.status(400).json({error : "Acabou o estoque, não é possivel cadastrar mais!"});
+    }
+    else if(quantidadeEstoque <= 0){
+        return res.status(400).json({error : "Você digitou um valor de estoque inválido. Insira um valor de estoque entre 1 e 14. "});
+    }
  
  
      const produtomusica = new Produtomusica({
